@@ -6,3 +6,8 @@
 /TacosIdentity/Tacos.Identity.Service/Properties
 /TacosIdentity/.vs/**
 /TacosIdentity/Tacos.Identity.Service/bin/**
+/TacosIdentity/Tacos.Api/bin/**
+/TacosIdentity/Tacos.Api/obj/**
+/TacosIdentity/Tacos.Api/Properties
+/TacosIdentity/Tacos.Client/bin/**
+/TacosIdentity/Tacos.Client/obj/**
