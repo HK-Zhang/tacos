@@ -12,3 +12,6 @@
 /TacosIdentity/Tacos.Client/bin/**
 /TacosIdentity/Tacos.Client/obj/**
 *.user
+/TacosIdentity/Tacos.Client.Web/bin/Debug/netcoreapp2.2
+/TacosIdentity/Tacos.Client.Web/obj
+/TacosIdentity/Tacos.Client.Web/Properties
