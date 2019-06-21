@@ -11,3 +11,4 @@
 /TacosIdentity/Tacos.Api/Properties
 /TacosIdentity/Tacos.Client/bin/**
 /TacosIdentity/Tacos.Client/obj/**
+*.user
