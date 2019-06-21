@@ -18,7 +18,11 @@ namespace Tacos.Identity.Service
         {
 
             services.AddIdentityServer()
-            .AddDeveloperSigningCredential();
+            .AddDeveloperSigningCredential()
+            .AddInMemoryIdentityResources(Config.GetIdentityResources())
+            .AddInMemoryApiResources(Config.GetApis())
+            .AddInMemoryClients(Config.GetClients());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
