@@ -2,4 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/TacosIdentity/Tacos.Identity.Service/obj
+/TacosIdentity/Tacos.Identity.Service/obj/**
+/TacosIdentity/Tacos.Identity.Service/Properties
+/TacosIdentity/.vs/**
+/TacosIdentity/Tacos.Identity.Service/bin/**
