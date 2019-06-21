@@ -1,4 +1,5 @@
-﻿using IdentityServer4.Models;
+﻿using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,8 @@ namespace Tacos.Identity.Service
         {
             return new IdentityResource[]
             {
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile(),
             };
         }
 
@@ -55,6 +57,23 @@ namespace Tacos.Identity.Service
                 new Secret("secret".Sha256())
             },
             AllowedScopes = { "api1" }
+        },
+                               new Client
+        {
+            ClientId = "mvc",
+            ClientName = "MVC Client",
+            AllowedGrantTypes = GrantTypes.Implicit,
+
+            RedirectUris = { "https://localhost:5005/signin-oidc" },
+
+            // where to redirect to after logout
+            PostLogoutRedirectUris = { "https://localhost:5005/signout-callback-oidc" },
+
+            AllowedScopes = new List<string>
+            {
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile
+            }
         }
             };
         }
