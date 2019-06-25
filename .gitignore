@@ -15,3 +15,6 @@
 /TacosIdentity/Tacos.Client.Web/bin/Debug/netcoreapp2.2
 /TacosIdentity/Tacos.Client.Web/obj
 /TacosIdentity/Tacos.Client.Web/Properties
+/TacosIdentity/Tacos.Identity.Service2/bin/Debug/netcoreapp2.2
+/TacosIdentity/Tacos.Identity.Service2/obj
+/TacosIdentity/Tacos.Identity.Service2/Properties/launchSettings.json
