@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tacos.Api", "Tacos.Api\Taco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tacos.Client", "Tacos.Client\Tacos.Client.csproj", "{2DA216CF-384C-4546-AEE7-C15D94159A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tacos.Client.Web", "Tacos.Client.Web\Tacos.Client.Web.csproj", "{63714EDE-70CC-44F8-BBD6-2D892E72F37E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tacos.Client.Web", "Tacos.Client.Web\Tacos.Client.Web.csproj", "{63714EDE-70CC-44F8-BBD6-2D892E72F37E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

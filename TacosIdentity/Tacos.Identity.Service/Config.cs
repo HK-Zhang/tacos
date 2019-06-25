@@ -63,7 +63,16 @@ namespace Tacos.Identity.Service
         {
             ClientId = "mvc",
             ClientName = "MVC Client",
-            AllowedGrantTypes = GrantTypes.Implicit,
+            //AllowedGrantTypes = GrantTypes.Implicit,
+
+            //Required for Hybrid flow
+            AllowedGrantTypes = GrantTypes.Hybrid,
+
+             //Required for Hybrid flow
+    ClientSecrets =
+    {
+        new Secret("secret".Sha256())
+    },
 
             RedirectUris = { "https://localhost:5005/signin-oidc" },
 
@@ -73,8 +82,10 @@ namespace Tacos.Identity.Service
             AllowedScopes = new List<string>
             {
                 IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile
-            }
+                IdentityServerConstants.StandardScopes.Profile,
+                "api1"  //Required for Hybrid flow
+            },
+             AllowOfflineAccess = true //Required for Hybrid flow
         }
             };
         }
