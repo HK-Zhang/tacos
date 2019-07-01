@@ -1,4 +1,5 @@
-﻿using IdentityServer4;
+﻿using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System;
@@ -13,10 +14,13 @@ namespace Tacos.Identity.Service2
     {
         public static IEnumerable<IdentityResource> GetIdentityResources()
         {
+            var customProfile = new IdentityResource(name: "custom.profile", displayName: "Custom profile", claimTypes: new[] { "role" });
+
             return new IdentityResource[]
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                customProfile
             };
         }
 
@@ -24,7 +28,7 @@ namespace Tacos.Identity.Service2
         {
             return new List<ApiResource>
             {
-                new ApiResource("api1", "My API")
+                new ApiResource("api1", "My API",new List<string>(){JwtClaimTypes.Role})
             };
         }
 
@@ -46,7 +50,11 @@ namespace Tacos.Identity.Service2
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "api1" }
+                    AllowedScopes = { "api1" },
+                                    Claims = new List<Claim>
+                {
+                    new Claim(JwtClaimTypes.Role, "admin")
+                }
                 },
                         new Client
         {
@@ -81,7 +89,8 @@ namespace Tacos.Identity.Service2
             {
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
-                "api1"  //Required for Hybrid flow
+                "api1",  //Required for Hybrid flow
+                "custom.profile"
             },
              AllowOfflineAccess = true //Required for Hybrid flow
         }

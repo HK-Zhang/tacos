@@ -21,7 +21,7 @@ namespace Tacos.Identity.Service2
 {
     public class Startup
     {
-        const string connectionString = @"Data Source=.\SQLEXPRESS;database=IdentityServer4Quickstart;trusted_connection=yes;";
+        const string connectionString = @"Data Source=.\SQLEXPRESS;database=IdentityServer4Quickstart2;trusted_connection=yes;";
 
         public Startup(IConfiguration configuration)
         {
@@ -79,7 +79,7 @@ namespace Tacos.Identity.Service2
           options.EnableTokenCleanup = true;
           options.TokenCleanupInterval = 30;
       })
-      .AddAspNetIdentity<IdentityUser>();
+      .AddAspNetIdentity<IdentityUser>().AddProfileService<CustomProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
