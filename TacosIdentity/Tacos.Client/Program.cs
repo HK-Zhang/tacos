@@ -21,6 +21,8 @@ namespace Tacos.Client
         {
             // discover endpoints from metadata
             var client = new HttpClient();
+            //var discoveryClient = new DiscoveryClient("http://localhost:5000") { Policy = { RequireHttps = false } };
+            //var disco = await discoveryClient.GetAsync();
             var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
             if (disco.IsError)
             {
