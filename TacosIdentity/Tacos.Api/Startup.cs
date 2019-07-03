@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Tacos.Api
 {
@@ -35,6 +36,7 @@ namespace Tacos.Api
         options.Authority = "http://localhost:5000";
         options.RequireHttpsMetadata = false;
         options.Audience = "api1";
+        options.TokenValidationParameters = new TokenValidationParameters { ClockSkew = new TimeSpan(0) }; // do not skew expired time of access token. 
     });
         }
 

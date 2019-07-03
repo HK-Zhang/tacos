@@ -74,6 +74,8 @@ namespace Tacos.Identity.Service2
 
             AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
             RequireConsent = false,
+            IdentityTokenLifetime = 3600,
+            AccessTokenLifetime = 3600,
 
     ClientSecrets =
     {
