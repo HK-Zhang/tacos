@@ -42,9 +42,7 @@ namespace Tacos.Identity.Service2
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddDefaultIdentity<IdentityUser>()
             //    .AddDefaultUI(UIFramework.Bootstrap4)
@@ -54,8 +52,8 @@ namespace Tacos.Identity.Service2
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             // Add application services.
             //services.AddTransient<IEmailSender, EmailSender>();
@@ -64,23 +62,22 @@ namespace Tacos.Identity.Service2
             //services.AddIdentityServer(option => option.IssuerUri = "https://localhost:5000)
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
-      .AddConfigurationStore(options =>
-      {
-          options.ConfigureDbContext = builder =>
-              builder.UseSqlServer(connectionString,
-                  sql => sql.MigrationsAssembly(migrationsAssembly));
-      })
-      .AddOperationalStore(options =>
-      {
-          options.ConfigureDbContext = builder =>
-              builder.UseSqlServer(connectionString,
-                  sql => sql.MigrationsAssembly(migrationsAssembly));
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = builder =>
+                    builder.UseSqlServer(connectionString,sql => sql.MigrationsAssembly(migrationsAssembly));
+                })
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = builder =>
+                    builder.UseSqlServer(connectionString,
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
 
-          // this enables automatic token cleanup. this is optional.
-          options.EnableTokenCleanup = true;
-          options.TokenCleanupInterval = 30;
-      })
-      .AddAspNetIdentity<IdentityUser>().AddProfileService<CustomProfileService>();
+                    // this enables automatic token cleanup. this is optional.
+                    options.EnableTokenCleanup = true;
+                    options.TokenCleanupInterval = 30;
+                })
+                .AddAspNetIdentity<IdentityUser>().AddProfileService<CustomProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

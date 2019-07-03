@@ -31,21 +31,21 @@ namespace Tacos.Api
             services.AddAuthorization();
 
             services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
-    {
-        options.Authority = "http://localhost:5000";
-        options.RequireHttpsMetadata = false;
-        options.Audience = "api1";
-        options.TokenValidationParameters = new TokenValidationParameters { ClockSkew = new TimeSpan(0) }; // do not skew expired time of access token. 
-        //options.TokenValidationParameters.ValidateIssuer = true;
-        //options.TokenValidationParameters.ValidIssuer = "https://localhost:5001";
-        //options.TokenValidationParameters.ValidIssuers = new[] { "https://localhost:5001", "https://localhost:5001" };
-        //options.TokenValidationParameters.IssuerValidator = (issuer, token, parameters) =>
-        //  {
-        //      //throw exception if authentication faild
-        //      return "https://localhost:5001";
-        //  };
-    });
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+                    options.Audience = "api1";
+                    options.TokenValidationParameters = new TokenValidationParameters { ClockSkew = new TimeSpan(0) }; // do not skew expired time of access token. 
+                                                                                                                       //options.TokenValidationParameters.ValidateIssuer = true;
+                                                                                                                       //options.TokenValidationParameters.ValidIssuer = "https://localhost:5001";
+                                                                                                                       //options.TokenValidationParameters.ValidIssuers = new[] { "https://localhost:5001", "https://localhost:5001" };
+                                                                                                                       //options.TokenValidationParameters.IssuerValidator = (issuer, token, parameters) =>
+                                                                                                                       //  {
+                                                                                                                       //      //throw exception if authentication faild
+                                                                                                                       //      return "https://localhost:5001";
+                                                                                                                       //  };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

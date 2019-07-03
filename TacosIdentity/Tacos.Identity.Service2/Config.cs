@@ -51,81 +51,80 @@ namespace Tacos.Identity.Service2
 
                     // scopes that client has access to
                     AllowedScopes = { "api1" },
-                                    Claims = new List<Claim>
-                {
-                    new Claim(JwtClaimTypes.Role, "admin")
-                }
+                    Claims = new List<Claim>
+                    {
+                        new Claim(JwtClaimTypes.Role, "admin")
+                    }
                 },
-                        new Client
-        {
-            ClientId = "ro.client",
-            AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                new Client
+                {
+                    ClientId = "ro.client",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    AllowedScopes = { "api1" }
+                },
+                new Client
+                {
+                    ClientId = "mvc",
+                    ClientName = "MVC Client",
 
-            ClientSecrets =
-            {
-                new Secret("secret".Sha256())
-            },
-            AllowedScopes = { "api1" }
-        },
-                               new Client
-        {
-            ClientId = "mvc",
-            ClientName = "MVC Client",
+                    AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
+                    RequireConsent = false,
+                    IdentityTokenLifetime = 3600,
+                    AccessTokenLifetime = 3600,
 
-            AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
-            RequireConsent = false,
-            IdentityTokenLifetime = 3600,
-            AccessTokenLifetime = 3600,
+                    ClientSecrets =
+                    {
+                    new Secret("secret".Sha256())
+                    },
 
-    ClientSecrets =
-    {
-        new Secret("secret".Sha256())
-    },
+                    RedirectUris = { "https://localhost:5005/signin-oidc" },
 
-            RedirectUris = { "https://localhost:5005/signin-oidc" },
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://localhost:5005/signout-callback-oidc" },
 
-            // where to redirect to after logout
-            PostLogoutRedirectUris = { "https://localhost:5005/signout-callback-oidc" },
-
-            AllowedScopes = new List<string>
-            {
-                IdentityServerConstants.StandardScopes.OpenId,
-                IdentityServerConstants.StandardScopes.Profile,
-                "api1",  //Required for Hybrid flow
-                "custom.profile"
-            },
-             AllowOfflineAccess = true //Required for Hybrid flow
-        }
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1",  //Required for Hybrid flow
+                        "custom.profile"
+                    },
+                    AllowOfflineAccess = true //Required for Hybrid flow
+                }
             };
         }
 
         public static List<TestUser> GetUsers()
         {
             return new List<TestUser>
-    {
-        new TestUser
-        {
-            SubjectId = "1",
-            Username = "alice",
-            Password = "password",
-                        Claims = new []
             {
-                new Claim("name", "Alice"),
-                new Claim("website", "https://alice.com")
-            }
-        },
-        new TestUser
-        {
-            SubjectId = "2",
-            Username = "bob",
-            Password = "password",
-                        Claims = new []
-            {
-                new Claim("name", "Alice"),
-                new Claim("website", "https://alice.com")
-            }
-        }
-    };
+                new TestUser
+                {
+                    SubjectId = "1",
+                    Username = "alice",
+                    Password = "password",
+                    Claims = new []
+                    {
+                        new Claim("name", "Alice"),
+                        new Claim("website", "https://alice.com")
+                    }
+                },
+                new TestUser
+                {
+                    SubjectId = "2",
+                    Username = "bob",
+                    Password = "password",
+                    Claims = new []
+                    {
+                        new Claim("name", "Alice"),
+                        new Claim("website", "https://alice.com")
+                    }
+                }
+            };
         }
     }
 }

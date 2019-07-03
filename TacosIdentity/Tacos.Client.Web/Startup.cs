@@ -44,36 +44,36 @@ namespace Tacos.Client.Web
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-    .AddCookie("Cookies")
-    .AddOpenIdConnect("oidc", options =>
-    {
-        options.Authority = "http://localhost:5000";
-        options.RequireHttpsMetadata = false;
+                .AddCookie("Cookies")
+                .AddOpenIdConnect("oidc", options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
 
-        options.ClientId = "mvc";
-        options.SaveTokens = true;
+                    options.ClientId = "mvc";
+                    options.SaveTokens = true;
 
-        //Required for Hybrid flow
-        options.SignInScheme = "Cookies";
-        options.ClientSecret = "secret";
-        options.ResponseType = "code id_token";
-        options.GetClaimsFromUserInfoEndpoint = true;
-        options.Scope.Add("api1");
-        options.Scope.Add("offline_access");
-        options.ClaimActions.MapJsonKey("website", "website");
+                    //Required for Hybrid flow
+                    options.SignInScheme = "Cookies";
+                    options.ClientSecret = "secret";
+                    options.ResponseType = "code id_token";
+                    options.GetClaimsFromUserInfoEndpoint = true;
+                    options.Scope.Add("api1");
+                    options.Scope.Add("offline_access");
+                    options.ClaimActions.MapJsonKey("website", "website");
 
-        //reoute to friendly page in case authentication failed.
-        //options.Events = new OpenIdConnectEvents()
-        //{
-        //    OnRemoteFailure = context =>
-        //    {
-        //        context.Response.Redirect(location: "/");
-        //        context.HandleResponse();
-        //        return Task.FromResult(0);
-        //    }
-        //};
+                    //reoute to friendly page in case authentication failed.
+                    //options.Events = new OpenIdConnectEvents()
+                    //{
+                    //    OnRemoteFailure = context =>
+                    //    {
+                    //        context.Response.Redirect(location: "/");
+                    //        context.HandleResponse();
+                    //        return Task.FromResult(0);
+                    //    }
+                    //};
 
-    });
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
