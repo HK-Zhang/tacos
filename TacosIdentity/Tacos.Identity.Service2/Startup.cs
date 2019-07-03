@@ -61,6 +61,7 @@ namespace Tacos.Identity.Service2
             //services.AddTransient<IEmailSender, EmailSender>();
 
             // configure identity server with in-memory stores, keys, clients and scopes
+            //services.AddIdentityServer(option => option.IssuerUri = "https://localhost:5000)
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
       .AddConfigurationStore(options =>

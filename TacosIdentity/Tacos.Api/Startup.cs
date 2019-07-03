@@ -37,6 +37,14 @@ namespace Tacos.Api
         options.RequireHttpsMetadata = false;
         options.Audience = "api1";
         options.TokenValidationParameters = new TokenValidationParameters { ClockSkew = new TimeSpan(0) }; // do not skew expired time of access token. 
+        //options.TokenValidationParameters.ValidateIssuer = true;
+        //options.TokenValidationParameters.ValidIssuer = "https://localhost:5001";
+        //options.TokenValidationParameters.ValidIssuers = new[] { "https://localhost:5001", "https://localhost:5001" };
+        //options.TokenValidationParameters.IssuerValidator = (issuer, token, parameters) =>
+        //  {
+        //      //throw exception if authentication faild
+        //      return "https://localhost:5001";
+        //  };
     });
         }
 

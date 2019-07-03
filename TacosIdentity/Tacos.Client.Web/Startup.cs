@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -61,6 +62,16 @@ namespace Tacos.Client.Web
         options.Scope.Add("offline_access");
         options.ClaimActions.MapJsonKey("website", "website");
 
+        //reoute to friendly page in case authentication failed.
+        //options.Events = new OpenIdConnectEvents()
+        //{
+        //    OnRemoteFailure = context =>
+        //    {
+        //        context.Response.Redirect(location: "/");
+        //        context.HandleResponse();
+        //        return Task.FromResult(0);
+        //    }
+        //};
 
     });
         }
